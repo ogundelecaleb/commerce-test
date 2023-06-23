@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="App">
+      <div class="container">
+        <div class="item">
+          <!-- <div class="overlay-effect"></div> -->
+
+          <div class="product">
+            <img src="/payloadlogo.png" class="cart-product-image" />
+            <div class="item-desc">
+              <!-- <div class="flex top">
+                <h5>E-com</h5>
+                <h4>demo</h4>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- <div class="item-details">
+
+            <div class="item-desc">
+              <div class="flex top">
+                <h5>E-com</h5>
+                <h4>demo</h4>
+              </div>
+            </div>
+            <p class="item-details__title">Total:</p>
+
+            <div class="product">
+              <p class="item-details__amount">NGN</p>
+              <input type="text" class="input" id="input" />
+            </div>
+            
+          </div> -->
+        </div>
+        <div class="checkout">
+          <div class="checkout-form">
+            <form id="paymentForm">
+              <div class="checkout-field">
+                <label>Email</label>
+                <input
+                  type="email"
+                  id="emailInput"
+                  name="emailInput"
+                  placeholder="Enter email"
+                  required
+                />
+              </div>
+
+              <div class="checkout-field">
+                <label>Phone</label>
+                <input
+                  type="tel;"
+                  id="phonenumber"
+                  name="phonenumber"
+                  placeholder="090986534576"
+                  required
+                />
+              </div>
+              <div class="checkout-field">
+                <label>Amount</label>
+                <input
+                  type="tel"
+                  id="amountInput"
+                  name="amountInput"
+                  step="0.01"
+                  placeholder="Enter amount"
+                  required
+                />
+              </div>
+              <div class="checkout-field">
+                <label>Currency</label>
+
+                <select
+                  autofocus
+                  required
+                  placeholder="NGN"
+                  id="currencyInput"
+                  name="currencyInput"
+                >
+                  <option class="option" value="">All Currency</option>
+                  <option class="option" value="NGN">Naira</option>
+                  <option class="option" value="USD">Dollar</option>
+                  <!-- <option class="option" value="GBP">Pound</option>
+                  <option class="option" value="EUR">Euro</option> -->
+                </select>
+              </div>
+              <button type="submit" id="paymentButton" class="paymentButton">
+                Make Payment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+            // Sample values for public key and secret key
+            var publicKey = "PLPK_gUrE7kbNTUufkYy_rxJ5aA";
+            var firstname = "Hello";
+            var lastname = "User";
+            // var amount = "100";
+            // var currency = "NGN";
+      var amount = document.getElementById("amountInput").value;
+
+      if(amount.length > 0){
+        var amount = document.getElementById("amountInput").value;
+        document
+              .getElementById("amountInput")
+              .addEventListener("change", function (event) {
+           document.getElementById("input").value = event.target.amount }) 
+      }
+           ;
+
+            // Payment form submission event handler
+            document
+              .getElementById("paymentForm")
+              .addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Get the amount and currency values from the form inputs
+
+                var amount = document.getElementById("amountInput").value;
+
+                var email = document.getElementById("emailInput").value;
+                var currency = document.getElementById("currencyInput").value;
+                //   var firstname = document.getElementById("firstname").value;
+                //   var lastname = document.getElementById("lastname").value;
+                var phonenumber = document.getElementById("phonenumber").value;
+console.log(currency)
+                // Pass the amount, currency code, public key, and secret key to the payment modal
+                var handler = PaylodeCheckout.setup({
+                  firstname,
+                  lastname,
+                  phonenumber,
+                  publicKey,
+                  email,
+                  amount,
+                  currency,
+                  onClose: function (data) {
+                    alert("iFRAME CLOSED Now");
+                    console.log("Returned data:", data);
+                  },
+                  onSuccess: function (data) {
+                    console.log("Returned data:", data);
+                  },
+                });
+                handler.openIframe();
+              });
+
+            // Function to open the payment modal
+    </script>
+
+    <script src="https://Paylode-checkout.netlify.app/checkout.js"></script>
+  </body>
+</html>
