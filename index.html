@@ -44,6 +44,16 @@
           <div class="checkout-form">
             <form id="paymentForm">
               <div class="checkout-field">
+                <label>Public Key</label>
+                <input
+                  type="text"
+                  id="keyInput"
+                  name="keyInput"
+                  placeholder="Enter public key"
+                  required
+                />
+              </div>
+              <div class="checkout-field">
                 <label>Email</label>
                 <input
                   type="email"
@@ -102,60 +112,59 @@
     </div>
 
     <script>
-            // Sample values for public key and secret key
-            var publicKey = "PLPK_gUrE7kbNTUufkYy_rxJ5aA";
-            var firstname = "Hello";
-            var lastname = "User";
-            // var amount = "100";
-            // var currency = "NGN";
+      // Sample values for public key and secret key
+      // var publicKey = "PLPK_gUrE7kbNTUufkYy_rxJ5aA";
+      var firstname = "Hello";
+      var lastname = "User";
+      // var amount = "100";
+      // var currency = "NGN";
       var amount = document.getElementById("amountInput").value;
 
-      if(amount.length > 0){
+      if (amount.length > 0) {
         var amount = document.getElementById("amountInput").value;
         document
-              .getElementById("amountInput")
-              .addEventListener("change", function (event) {
-           document.getElementById("input").value = event.target.amount }) 
+          .getElementById("amountInput")
+          .addEventListener("change", function (event) {
+            document.getElementById("input").value = event.target.amount;
+          });
       }
-           ;
+      // Payment form submission event handler
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
 
-            // Payment form submission event handler
-            document
-              .getElementById("paymentForm")
-              .addEventListener("submit", function (event) {
-                event.preventDefault();
+          // Get the amount and currency values from the form inputs
 
-                // Get the amount and currency values from the form inputs
+          var amount = document.getElementById("amountInput").value;
+          var publicKey = document.getElementById("keyInput").value;
 
-                var amount = document.getElementById("amountInput").value;
+          var email = document.getElementById("emailInput").value;
+          var currency = document.getElementById("currencyInput").value;
+          
+          var phonenumber = document.getElementById("phonenumber").value;
+          console.log(currency);
+          // Pass the amount, currency code, public key, and secret key to the payment modal
+          var handler = PaylodeCheckout.setup({
+            firstname,
+            lastname,
+            phonenumber,
+            publicKey,
+            email,
+            amount,
+            currency,
+            onClose: function (data) {
+              alert("iFRAME CLOSED Now");
+              console.log("Returned data:", data);
+            },
+            onSuccess: function (data) {
+              console.log("Returned data:", data);
+            },
+          });
+          handler.openIframe();
+        });
 
-                var email = document.getElementById("emailInput").value;
-                var currency = document.getElementById("currencyInput").value;
-                //   var firstname = document.getElementById("firstname").value;
-                //   var lastname = document.getElementById("lastname").value;
-                var phonenumber = document.getElementById("phonenumber").value;
-console.log(currency)
-                // Pass the amount, currency code, public key, and secret key to the payment modal
-                var handler = PaylodeCheckout.setup({
-                  firstname,
-                  lastname,
-                  phonenumber,
-                  publicKey,
-                  email,
-                  amount,
-                  currency,
-                  onClose: function (data) {
-                    alert("iFRAME CLOSED Now");
-                    console.log("Returned data:", data);
-                  },
-                  onSuccess: function (data) {
-                    console.log("Returned data:", data);
-                  },
-                });
-                handler.openIframe();
-              });
-
-            // Function to open the payment modal
+      // Function to open the payment modal
     </script>
 
     <script src="https://Paylode-checkout.netlify.app/checkout.js"></script>
