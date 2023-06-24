@@ -86,6 +86,17 @@
                 />
               </div>
               <div class="checkout-field">
+                <label>Redirect URL</label>
+                <input
+                  type="text"
+                  id="redirectInput"
+                  name="redirectInput"
+                
+                  placeholder="Redirect URL"
+                  required
+                />
+              </div>
+              <div class="checkout-field">
                 <label>Currency</label>
 
                 <select
@@ -112,12 +123,10 @@
     </div>
 
     <script>
-      // Sample values for public key and secret key
-      // var publicKey = "PLPK_gUrE7kbNTUufkYy_rxJ5aA";
+      
       var firstname = "Hello";
       var lastname = "User";
-      // var amount = "100";
-      // var currency = "NGN";
+    
       var amount = document.getElementById("amountInput").value;
 
       if (amount.length > 0) {
@@ -138,6 +147,7 @@
 
           var amount = document.getElementById("amountInput").value;
           var publicKey = document.getElementById("keyInput").value;
+          var redirectUrl = document.getElementById("redirectInput").value;
 
           var email = document.getElementById("emailInput").value;
           var currency = document.getElementById("currencyInput").value;
@@ -148,6 +158,7 @@
           var handler = PaylodeCheckout.setup({
             firstname,
             lastname,
+            redirectUrl,
             phonenumber,
             publicKey,
             email,
