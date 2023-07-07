@@ -22,23 +22,6 @@
               </div> -->
             </div>
           </div>
-
-          <!-- <div class="item-details">
-
-            <div class="item-desc">
-              <div class="flex top">
-                <h5>E-com</h5>
-                <h4>demo</h4>
-              </div>
-            </div>
-            <p class="item-details__title">Total:</p>
-
-            <div class="product">
-              <p class="item-details__amount">NGN</p>
-              <input type="text" class="input" id="input" />
-            </div>
-            
-          </div> -->
         </div>
         <div class="checkout">
           <div class="checkout-form">
@@ -91,7 +74,6 @@
                   type="text"
                   id="redirectInput"
                   name="redirectInput"
-                
                   placeholder="Redirect URL"
                   required
                 />
@@ -123,10 +105,9 @@
     </div>
 
     <script>
-      
       var firstname = "Hello";
       var lastname = "User";
-    
+
       var amount = document.getElementById("amountInput").value;
 
       if (amount.length > 0) {
@@ -151,7 +132,7 @@
 
           var email = document.getElementById("emailInput").value;
           var currency = document.getElementById("currencyInput").value;
-          
+
           var phonenumber = document.getElementById("phonenumber").value;
           console.log(currency);
           // Pass the amount, currency code, public key, and secret key to the payment modal
@@ -167,6 +148,7 @@
             onClose: function (data) {
               alert("iFRAME CLOSED Now");
               console.log("Returned data:", data);
+              console.log("iframeId", document.getElementById("iframeId"));
             },
             onSuccess: function (data) {
               console.log("Returned data:", data);
@@ -175,9 +157,18 @@
           handler.openIframe();
         });
 
-      // Function to open the payment modal
+      // var receiveMessage = function (event) {
+      //   if ("close-iframe" == event.data) {
+      //     $("#iframeId").remove();
+      //   }
+      //   console.log(event);
+      //   alert(event.origin);
+      // };
+      // window.addEventListener("message", receiveMessage, false);
+
+      
     </script>
 
-    <script src="https://Paylode-checkout.netlify.app/checkout.js"></script>
+    <script src="https://checkout.paylodeservices.com/checkout.js"></script>
   </body>
 </html>
