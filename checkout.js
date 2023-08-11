@@ -178,8 +178,7 @@ const PaylodeCheckout = {
     //           border-radius: 50%;
     //           animation: lds-ring 0.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     //           border-color: #000000;
-                   
-                 
+
     //         .lds-ring div:nth-child(1) {
     //           animation-delay: -0s;
     //         }
@@ -209,10 +208,9 @@ const PaylodeCheckout = {
     document.head.appendChild(style);
 
     var iframe = document.createElement("iframe");
-    iframe.setAttribute("id", "iframeId");
-        // iframe.src = `https://paymentgateway.paylodeservices.com/?publicKey=${encodeURIComponent(
+    iframe.setAttribute("id", "iframeId"); // iframe.src = `http://94.229.79.27:3812/?publicKey=${encodeURIComponent(
 
-    iframe.src = `http://94.229.79.27:3812/?publicKey=${encodeURIComponent(
+    iframe.src = `https://paymentgateway.paylodeservices.com/?publicKey=${encodeURIComponent(
       records.publicKey
     )}&amount=${encodeURIComponent(
       records.amount
