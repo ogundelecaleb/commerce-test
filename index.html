@@ -30,7 +30,7 @@
                   id="keyInput"
                   name="keyInput"
                   placeholder="Enter public key"
-                  required
+                
                 />
               </div>
               <div class="checkout-field">
@@ -45,8 +45,7 @@
               </div>
 
               <div class="checkout-field">
-                <label>Phone</label>
-                <input
+               <label>Phone</label>                <input
                   type="tel;"
                   id="phonenumber"
                   name="phonenumber"
@@ -62,8 +61,7 @@
                   name="amountInput"
                   step="0.01"
                   placeholder="Enter amount"
-                  required
-                />
+                  required               />
               </div>
               <div class="checkout-field">
                 <label>Redirect URL</label>
@@ -79,8 +77,8 @@
                 <label>Currency</label>
 
                 <select
-                  autofocus
-                  required
+                  autofocu
+                  
                   placeholder="NGN"
                   id="currencyInput"
                   name="currencyInput"
@@ -148,7 +146,8 @@
               console.log("iframeId", document.getElementById("iframeId"));
             },
             onSuccess: function (data) {
-              console.log("Returned data:", data);
+              alert("THIS IS A SUCCESS Alert");
+              // console.log("Returned data:", data);
             },
           });
           handler.openIframe();
@@ -156,8 +155,9 @@
 
       
     </script>
-    <script src="http://94.229.79.27:8451/checkout.js"></script>
+    <!-- <script src="http://94.229.79.27:8451/checkout.js"></script> -->
+    <!-- <script src="https://checkout.paylodeservices.com/checkout.js"></script> -->
+    <script src="checkout.js"></script>
 
-    <!-- <script src="https://master--paylode-checkout.netlify.app/checkout.js"></script> -->
   </body>
 </html>
